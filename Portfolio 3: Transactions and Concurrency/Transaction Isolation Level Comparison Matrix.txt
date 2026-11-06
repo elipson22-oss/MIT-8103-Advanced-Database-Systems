@@ -1,0 +1,40 @@
+# MongoDB Document Model Design
+For real-time transcript queries and low-latency student dashboard rendering, a Document-Oriented NoSQL Model (MongoDB) is designed. Student academic histories are embedded within single documents to avoid expensive runtime joins.
+{
+  "_id": "OBJ_STU_2026_0042",
+  "matric_no": "EC/2023/CS/042",
+  "first_name": "Alexander",
+  "last_name": "Wright",
+  "email": "a.wright@elicollege.edu",
+  "department": {
+    "dept_code": "CS",
+    "dept_name": "Computer Science"
+  },
+  "enrollment_year": 2023,
+  "academic_records": [
+    {
+      "academic_year": 2025,
+      "semester": "Fall",
+      "courses": [
+        {
+          "course_code": "CS301",
+          "course_title": "Database Systems",
+          "credit_units": 4,
+          "score": 88.5,
+          "letter_grade": "A",
+          "grade_point": 4.0
+        },
+        {
+          "course_code": "CS303",
+          "course_title": "Algorithms & Complexity",
+          "credit_units": 3,
+          "score": 76.0,
+          "letter_grade": "B",
+          "grade_point": 3.0
+        }
+      ],
+      "sgpa": 3.57
+    }
+  ],
+  "cgpa": 3.68
+}

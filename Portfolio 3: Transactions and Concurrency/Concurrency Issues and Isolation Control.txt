@@ -1,0 +1,18 @@
+Identified Concurrency Anomaly: Lost Update Scenario
+When two lecturers or administrative staff enter grades concurrently for the same student record without locking:
+Transaction 1 (Staff A)               Transaction 2 (Staff B)
+-----------------------               -----------------------
+BEGIN;                                BEGIN;
+SELECT score FROM grades             
+WHERE grade_id = 50; (-- Returns 65)  SELECT score FROM grades
+                                      WHERE grade_id = 50; (-- Returns 65)
+UPDATE grades SET score = 75          
+WHERE grade_id = 50;                  
+                                      UPDATE grades SET score = 82 
+                                      WHERE grade_id = 50;
+COMMIT;                               
+                                      COMMIT; (-- Staff A's update to 75 is LOST!)
+
+
+                         
+
