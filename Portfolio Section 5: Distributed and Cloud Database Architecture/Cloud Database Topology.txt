@@ -1,0 +1,18 @@
+Cloud Database Topology
+Eli College deploys a hybrid cloud architecture using a managed AWS RDS PostgreSQL Multi-AZ deployment configured for high availability, fault tolerance, and regional read scaling.
+
+
+
+
+[ API Gateway / Load Balancer ]
+                                 │
+                 ┌───────────────┴───────────────┐
+                 ▼                               ▼
+       [ Primary RDS Node ]              [ Read Replica Node 1 ]
+     (AZ-a: Read/Write Master)           (AZ-b: Read-Only Portal)
+                 │                               │
+       Synchronous Replication         Asynchronous Replication
+                 │                               │
+                 ▼                               ▼
+       [ Standby RDS Node ]              [ Read Replica Node 2 ]
+       (AZ-b: Failover Target)           (AZ-c: Analytics/Transcripts)

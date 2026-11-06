@@ -1,0 +1,4 @@
+Replication Strategy
+Multi-AZ Synchronous Replication: Real-time synchronous replication between the Primary Node (Availability Zone A) and Standby Node (Availability Zone B). Ensures zero data loss (RPO = 0) in event of hardware failure.
+
+Asynchronous Read Replicas: Secondary read-only instances handle portal traffic during peak examination result release periods.

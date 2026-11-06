@@ -1,0 +1,22 @@
+Consistency (C)
+                            /\
+                           /  \
+                          /    \
+                         /  CP  \  (Grade Integrity & Official Transcripts)
+                        /  System\
+                       /__________\
+          Availability (A)  AP   Partition Tolerance (P)
+                  (Portal Catalog Browsing)
+
+                  ystem Partition Trade-off Decisions
+Consistency Over Availability (CP Choice for Grades & Registration)
+
+Module: Grade Entry, Transcript Generation, and Seat Allocation.
+
+Trade-off Justification: It is unacceptable for a student to view outdated or inaccurate grades due to replication lag. The system enforces Strong Consistency (CP), opting to briefly reject a write request if network partitioning prevents database nodes from agreeing on official records.
+
+Availability Over Consistency (AP Choice for Student Dashboard & Catalog)
+
+Module: Course Catalog Browsing, General Announcements, and Syllabus Lookup.
+
+Trade-off Justification: Enforces Eventual Consistency (AP). Read queries draw from distributed read replicas. In the rare event of inter-node partition delay, serving slightly stale catalog information is preferred over denying access to the student portal entirely.

@@ -1,0 +1,4 @@
+For the MongoDB document layer, horizontal sharding is executed using a compound hash shard key:
+Shard Key: { "department.dept_code": 1, "matric_no": "hashed" }
+
+Benefit: Distributes read load evenly across database cluster nodes while keeping students within the same department co-located on target shards for localized analytical queries.
