@@ -1,0 +1,11 @@
+Plaintext
+Nested Loop  (cost=4.30..48.12 rows=420 width=45) (actual time=0.085..1.120 rows=450 loops=1)
+  ->  Nested Loop  (cost=0.28..22.50 rows=30 width=12) (actual time=0.030..0.180 rows=30 loops=1)
+        ->  Index Scan using idx_offerings_term on course_offerings co (cost=0.28..8.30 rows=30 width=8)
+              Index Cond: ((academic_year = 2026) AND (semester = 'Fall'::text))
+        ->  Index Scan using idx_registrations_offering on registrations r (cost=0.28..0.45 rows=14 width=12)
+              Index Cond: (offering_id = co.offering_id)
+  ->  Index Scan using grades_registration_id_key on grades g (cost=0.28..0.85 rows=1 width=18)
+        Index Cond: (registration_id = r.registration_id)
+Planning Time: 0.35 ms
+Execution Time: 1.18 ms

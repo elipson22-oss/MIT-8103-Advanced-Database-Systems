@@ -1,0 +1,5 @@
+Execution Time: Dropped from 34.25 ms to 1.18 ms (a ~96.5% reduction in query latency).
+
+Scan Method: Shifted from costly Sequential Scans (Seq Scan) across thousands of unindexed rows to target Index Scans (idx_offerings_term and idx_registrations_offering).
+
+I/O Efficiency: Disk/buffer block reads were significantly reduced, allowing Eli College's result portal to scale to tens of thousands of concurrent transcript lookups during result publication days.

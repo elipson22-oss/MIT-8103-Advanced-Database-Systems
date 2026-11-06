@@ -1,0 +1,13 @@
+Without indexing foreign key lookup fields and filtered search parameters, PostgreSQL executes full sequential table scans:
+
+Plaintext
+Hash Join  (cost=185.50..412.30 rows=420 width=45) (actual time=12.450..34.110 rows=450 loops=1)
+  Hash Cond: (g.registration_id = r.registration_id)
+  ->  Seq Scan on grades g  (cost=0.00..180.00 rows=10000 width=18) (actual time=0.015..8.200 rows=10000 loops=1)
+  ->  Hash  (cost=175.00..175.00 rows=420 width=35) (actual time=12.200..12.200 rows=450 loops=1)
+        ->  Nested Loop  (cost=0.00..175.00 rows=420 width=35)
+              ->  Seq Scan on course_offerings co (cost=0.00..45.00 rows=30 width=8) (actual time=0.010..2.100 rows=30 loops=1)
+                    Filter: ((semester = 'Fall'::text) AND (academic_year = 2026))
+              ->  Seq Scan on registrations r (cost=0.00..3.80 rows=14 width=12)
+Planning Time: 1.45 ms
+Execution Time: 34.25 ms
