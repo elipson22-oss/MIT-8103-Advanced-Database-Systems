@@ -1,0 +1,12 @@
+Case Study Description: Eli College (EC) Student Result Portal
+Eli College (EC) requires a centralized database management system to handle academic operations, course enrollments, grade entries, GPA computations, and student transcript generation.
+
+The enterprise domain encompasses the following functional requirements:
+
+Academic Structure: The college consists of multiple academic Departments (e.g., Computer Science, Electrical Engineering). Each department offers specific Courses and employs Lecturers.
+
+Instructors & Students: Lecturers are assigned to lead specific course offerings each semester. Students belong to a primary department and enroll in courses offered across semesters.
+
+Enrollment & Assessment: During registration periods, students create Registration Records for course offerings. Upon semester completion, lecturers submit numerical scores which translate into letter Grades and grade points.
+
+Academic Evaluation: The portal computes Semester Grade Point Average (SGPA) and Cumulative Grade Point Average (CGPA) dynamically and produces official academic Transcripts.
